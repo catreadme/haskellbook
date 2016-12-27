@@ -39,14 +39,14 @@ A variable not bound by the head is called a `free variable`.
 ```
 In this case, only `x` is bound by the head, `y` remains unbound, or *free*.
 
-When applying an argument to this function, `y` stays irreducible:
+When applying an argument to this function, `y` remains irreducible:
 ```
 (λx.xy) z
 (λ[x := z].xy)
 zy
 ```
 Note that `alpha equivalence` does not apply to free variables. `λx.xy` is *not*
-the same as `λx.xz`, since  `y` and `z` could refer to anything.
+the same as `λx.xz`, since  `y` and `z` could both refer to anything.
 
 ## Multiple arguments
 Each lambda can only bind one parameter and only accept one argument. To allow
