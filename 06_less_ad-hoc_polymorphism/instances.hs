@@ -1,3 +1,5 @@
+module Instances where
+
 -- TisAnInteger
 data TisAnInteger = TisAn Integer
 

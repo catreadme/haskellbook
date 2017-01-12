@@ -1,3 +1,5 @@
+module Trivial where
+
 -- Trivial
 data Trivial = Trivial'
 
