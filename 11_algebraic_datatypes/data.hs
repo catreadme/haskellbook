@@ -1,3 +1,6 @@
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE FlexibleInstances #-}
+
 data Price = Price Integer
   deriving (Eq, Show)
 
@@ -32,3 +35,27 @@ areCars xs = map isCar xs
 getManu :: Vehicle -> Manufacturer
 getManu (Plane _ _) = error "not a car"
 getManu (Car manu _) = manu
+
+newtype Goats = Goats Int
+  deriving (Eq, Show, TooMany)
+
+newtype Cows = Cows Int
+  deriving (Eq, Show)
+
+tooManyGoats :: Goats -> Bool
+tooManyGoats (Goats n) = n > 42
+
+class TooMany a where
+  tooMany :: a -> Bool
+
+instance TooMany Int where
+  tooMany n = n > 42
+
+instance TooMany (Int, String) where
+  tooMany (x,_) = tooMany x
+
+instance TooMany (Int, Int) where
+  tooMany (x,y) = tooMany $ x + y
+
+instance (Num a, TooMany a) => TooMany (a,a) where
+  tooMany (x,y) = tooMany $ x + y
